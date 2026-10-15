@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+<link rel="stylesheet" href="sidepanel.css">
+</head>
+<body class="side-panel">
+  <!--
+    THESIS: ILQ bir sohbet uygulaması değil, iki el arasında gidip gelen mühürlü bir teslimattır;
+    yüzey gizli bir kurye masasıdır. Tekerlek-ikon temiz sohbet iskelesini (balonlar-beyaz zemin,
+    uygulama ızgarası) reddeder; her ritüel kurye evrakı olarak kurulur.
+    OWN-WORLD: sıcak kemik kağıt zemin; manila fişler; sıcak mürekkep; kayıt kaşeleri (büyük harf,
+    harf aralıklı, delikli kenar); mum mühür + posta damgası motifi; güven yeşili yalnızca doğrulanmış
+    mührün anında; tek kırmızı RET kaşesi. InterVar arayüz; mono yalnızca kod/adres/parmak izinde.
+    STORY: ziyaretçi masaya gelir, bağlantı kodunu (zarf) alır, bağlanır (mühür), parmak izini karşılaştırır
+    (mührü kırar → yeşil mum mühür) ve panikte sadece sıradan bir resmi bülten kalır.
+    FIRST VIEWPORT: giriş — pusula-mühür rozeti, başlık, özet, zarf-fişi birincil eylem; "Sohbete başla".
+    FORM: atanan yön, sıralı listenin 5. adayı; seed anahtarı b51cef42.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+  <div class="app">
+
+    <!-- Giriş ekranı -->
+    <section id="loginView" class="view login">
+      <div class="brand">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.4"/>
+            <circle cx="12" cy="12" r="5.2"/>
+            <path d="M12 9.5V14.5M9.5 12H14.5"/>
+          </svg>
+        </span>
+        <span class="brand-name">ILQ</span>
+      </div>
+
+      <h1 class="headline" data-i18n="app.headline">Sessiz sohbete başla</h1>
+      <p class="lede" data-i18n="app.lede">Sunucusuz, kayıtsız ve izsiz. Anahtarlar yalnızca bellekte üretilir; bu cihazın diski hiç yazılmaz.</p>
+
+      <div class="addr-note">
+        <span class="addr-note-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4.5" y="6" width="15" height="12" rx="1.5"/>
+            <path d="M7.5 10h9M7.5 12.6h9M7.5 15.2h5"/>
+          </svg>
+        </span>
+        <p data-i18n="app.addrNote">Konuşmak için arkadaşına bağlantı kodu göndermen yeterli — kimliğini paylaşma.</p>
+      </div>
+
+      <button id="loginBtn" class="primary" data-i18n="app.start">Sohbete başla</button>
+
+      <p class="footnote">
+        <span class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.4"/>
+            <path d="M12 11v4.5"/>
+            <path d="M12 7.6h.01"/>
+          </svg>
+        </span>
+        <span data-i18n="app.footnote">Anahtarlar yalnızca bellekte tutulur; kapatınca bağlantılar biter, iz kalmaz.</span>
+      </p>
+
+      <details class="net-settings">
+        <summary data-i18n="net.summary">Ağ ayarları (gelişmiş)</summary>
+        <div class="net-grid">
+          <div class="field">
+            <label for="netHost" data-i18n="net.hostLabel">Sinyal sunucusu (opsiyonel)</label>
+            <input id="netHost" type="text" placeholder="örn. peer.ornek.com" autocomplete="off" data-i18n-placeholder="net.hostPh">
+          </div>
+          <div class="field net-port">
+            <label for="netPort" data-i18n="net.portLabel">Port</label>
+            <input id="netPort" type="text" placeholder="443" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="netPath" data-i18n="net.pathLabel">Yol</label>
+            <input id="netPath" type="text" placeholder="/" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="netIce" data-i18n="net.iceLabel">ICE/TURN sunucuları (JSON)</label>
+            <textarea id="netIce" rows="2" placeholder='[{"urls":"turn:turn.ornek.com:3478","username":"","credential":""}]' spellcheck="false"></textarea>
+            <p class="field-help" data-i18n="net.help">Boş bırakılırsa PeerJS genel bulutu + Google STUN kullanılır. Kendi TURN'unu eklemek simetrik NAT'ta bağlantıyı garanti eder.</p>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- Ana ekran -->
+    <section id="mainView" class="view hidden">
+      <div id="screenMask" class="screen-mask" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="8.4"/>
+          <circle cx="12" cy="12" r="5.2"/>
+          <path d="M12 9.5V14.5M9.5 12H14.5"/>
+        </svg>
+      </div>
+
+      <div class="topbar">
+        <div class="brand small">
+          <span class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4"/>
+              <circle cx="12" cy="12" r="5.2"/>
+              <path d="M12 9.5V14.5M9.5 12H14.5"/>
+            </svg>
+          </span>
+          <span class="brand-name">ILQ</span>
+        </div>
+        <div class="topbar-right">
+          <span id="connectionState" class="pill" data-state="offline">
+            <span class="pill-dot"></span>
+            <span class="pill-text" data-i18n="status.offline">çevrimdışı</span>
+          </span>
+          <button id="panicBtn" class="panic-btn" type="button" aria-label="Panik modu" title="Mühürü kır, masayı boşalt" data-i18n-aria="panic.title" data-i18n-title="panic.title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4" stroke-dasharray="2.6 2.2"/>
+              <circle cx="12" cy="12" r="5.2"/>
+              <path d="M12 9.5V14.5M9.5 12H14.5"/>
+            </svg>
+            <span data-i18n="panic.label">Panik</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="identity">
+        <span class="field-label" data-i18n="ident.label">Kimliğim</span>
+        <div id="myPeerId" class="mono">—</div>
+        <button id="resetIdentityBtn" class="ghost reset" title="Kimliği sıfırla" data-i18n="ident.reset">Kimliği sıfırla</button>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button id="tabConnect" class="tab active" role="tab" data-i18n="tab.connect">Bağlan</button>
+        <button id="tabCode" class="tab" role="tab" data-i18n="tab.code">Kod</button>
+        <button id="tabChat" class="tab" role="tab" data-i18n="tab.chat">Sohbet</button>
+      </div>
+
+      <!-- Bağlan -->
+      <div id="panelConnect" class="panel">
+        <h2 class="panel-title" data-i18n="connect.title">Bağlan</h2>
+        <p class="panel-sub" data-i18n="connect.sub">Arkadaşının "Kod" sekmesinde ürettiği bağlantı kodunu yapıştır — rastgele harf/rakam dizisi. (Kendi "Kimliğin" değil.)</p>
+        <textarea id="codeInput" placeholder="Arkadaşının gönderdiği kodu yapıştır…" rows="4" wrap="soft" spellcheck="false" data-i18n-placeholder="connect.ph"></textarea>
+        <button id="connectBtn" class="primary">Bağlantı kur</button>
+        <button id="scanBtn" class="secondary scan-btn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M4 12h16"/></svg>
+          <span data-i18n="connect.scan">Kodu tara</span>
+        </button>
+        <div id="safetyInfo" class="safety hidden">
+          <span class="safety-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4"/>
+              <circle cx="12" cy="12" r="5.2"/>
+              <path d="M12 9.5V14.5M9.5 12H14.5"/>
+            </svg>
+          </span>
+          <span id="safetyInfoText" data-i18n="connect.safety">Bağlantı kurulunca güvenlik numarasını karşı cihazdakiyle karşılaştır. Doğrulanana kadar mesaj gönderilemez.</span>
+        </div>
+        <p class="field-label" data-i18n="connect.book">Adres defteri</p>
+        <div id="contactList" class="contact-list"></div>
+        <div class="theme-settings">
+          <label class="field-label" for="langSelect" data-i18n="lang.label">Dil</label>
+          <select id="langSelect" class="message-input">
+            <option value="tr">Türkçe</option>
+            <option value="en">English</option>
+          </select>
+          <label class="field-label" for="themeSelect" data-i18n="theme.label">Tema</label>
+          <select id="themeSelect" class="message-input">
+            <option value="bone" data-i18n="theme.bone">Kemik-beyazı</option>
+            <option value="dark" data-i18n="theme.dark">Karanlık</option>
+            <option value="hc" data-i18n="theme.hc">Yüksek kontrast</option>
+            <option value="system" data-i18n="theme.system">Sistem</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Kod üret -->
+      <div id="panelCode" class="panel hidden">
+        <h2 class="panel-title" data-i18n="code.title">Bağlantı kodu</h2>
+        <p class="panel-sub" data-i18n="code.sub">Üretilen kod rastgele görünümlü bir dizedir — Kimliğin (adresin) bu kodun içinde gömülüdür. Kodu güvenilir bir kanaldan gönder; tek kullanımlıktır.</p>
+        <div class="code-card">
+          <div class="code-card-head">
+            <span class="field-label" data-i18n="code.your">Kodun</span>
+            <button id="copyCodeBtn" class="ghost" title="Kodu kopyala" data-i18n="code.copy">Kopyala</button>
+          </div>
+          <div id="generatedCode" class="code-readout mono">—</div>
+          <div id="codeCountdown" class="code-countdown note" hidden></div>
+          <div class="qr-wrap" hidden>
+            <canvas id="qrCanvas" aria-label="QR kod"></canvas>
+            <p class="qr-note" data-i18n="code.qrNote">Bu kodu yalnızca güvendiğin kişiye göster.</p>
+          </div>
+        </div>
+        <button id="genCodeBtn" class="secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="6" width="18" height="12" rx="2"/>
+            <path d="M3 7.5 12 13l9-5.5"/>
+            <circle cx="17" cy="15.5" r="1.6"/>
+          </svg>
+          <span data-i18n="code.gen">Yeni kod üret</span>
+        </button>
+        <p class="footnote" data-i18n="code.footnote">Bu, tüm kodun kopyalandığından emin ol; baştan ve sondan harf eksiltme kodu bozar.</p>
+      </div>
+
+      <!-- Sohbet -->
+      <div id="panelChat" class="panel hidden">
+        <div id="chatTabs" class="chat-tabs" role="tablist"></div>
+        <div id="chatHeader" class="chatheader">
+          <span class="chat-lock">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4"/>
+              <circle cx="12" cy="12" r="5.2"/>
+              <path d="M12 9.5V14.5M9.5 12H14.5"/>
+            </svg>
+          </span>
+          <span id="chatPeer" class="mono" data-i18n="chat.peer">Sohbet</span>
+          <span id="typingHint" class="typing-hint" hidden data-i18n="chat.typing">yazıyor…</span>
+          <button id="callBtn" class="chat-call-btn" type="button" title="Sesli arama" aria-label="Sesli arama" data-i18n-title="call.audio" data-i18n-aria="call.audio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.5 3.5h4l1.5 5-2.2 1.6a13 13 0 0 0 4.6 4.6l1.6-2.2 5 1.5v4a1.8 1.8 0 0 1-2 1.8A15.5 15.5 0 0 1 4.7 5.5a1.8 1.8 0 0 1 1.8-2Z"/>
+            </svg>
+            <span data-i18n="call.audio">Sesli arama</span>
+          </button>
+          <button id="callVideoBtn" class="chat-call-btn" type="button" title="Görüntülü arama" aria-label="Görüntülü arama" data-i18n-title="call.video" data-i18n-aria="call.video">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="6" width="13" height="12" rx="1.5"/>
+              <path d="m16 10 5-2.5v9L16 14"/>
+            </svg>
+            <span data-i18n="call.video">Görüntülü arama</span>
+          </button>
+          <button id="readAckBtn" class="read-ack-toggle" type="button" title="Okundu kaşesi" aria-pressed="true">Okundu açık</button>
+          <select id="chatTimerSelect" class="message-input" title="Sohbet düzeyi otomatik yok etme" data-i18n-title="chat.timerTitle">
+            <option value="0" data-i18n="chat.timerOff">Yok etme yok</option>
+            <option value="30" data-i18n="chat.timer30">30 sn</option>
+            <option value="300" data-i18n="chat.timer300">5 dk</option>
+          </select>
+        </div>
+        <div id="chatMessages" class="messages" data-empty="chat.empty"></div>
+        <div class="compose">
+          <select id="expirySelect" class="message-input">
+            <option value="0" data-i18n="chat.expiryOff">Süre yok</option>
+            <option value="30" data-i18n="chat.expiry30">30 sn sonra yok ol</option>
+            <option value="300" data-i18n="chat.expiry300">5 dk sonra yok ol</option>
+          </select>
+          <input type="file" id="fileInput" hidden>
+          <button id="micBtn" class="button-secondary filebtn" type="button" title="Sesli mesaj" aria-label="Sesli mesaj" data-i18n-title="chat.recMic" data-i18n-aria="chat.recMic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="3" width="6" height="11" rx="3"/>
+              <path d="M5.5 11.5a6.5 6.5 0 0 0 13 0"/>
+              <path d="M12 18v3"/>
+            </svg>
+          </button>
+          <button id="fileBtn" class="button-secondary filebtn" type="button" title="Dosya gönder" aria-label="Dosya gönder" data-i18n-title="chat.fileBtn" data-i18n-aria="chat.fileBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.5 11.5 12 20a5 5 0 0 1-7-7l8.5-8.5a3.4 3.4 0 0 1 4.8 4.8L9.5 18a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/>
+            </svg>
+          </button>
+          <input id="messageInput" type="text" placeholder="Şifreli mesaj…" autocomplete="off" data-i18n-placeholder="chat.ph">
+          <button id="sendBtn" class="primary send" title="Gönder" aria-label="Gönder" data-i18n-title="chat.send" data-i18n-aria="chat.send">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4"/>
+              <circle cx="12" cy="12" r="5.2"/>
+              <path d="M12 9.5V14.5M9.5 12H14.5"/>
+            </svg>
+          </button>
+        </div>
+        <div id="voiceDraftBar" class="voice-draft hidden">
+          <span class="voice-draft-label" data-i18n="voice.ready">Ses kaydı hazır</span>
+          <audio id="voiceDraftAudio" controls preload="metadata"></audio>
+          <button id="voiceDraftSendBtn" class="secondary" type="button" data-i18n="voice.send">Gönder</button>
+          <button id="voiceDraftCancelBtn" class="ghost" type="button" data-i18n="voice.cancel">Vazgeç</button>
+        </div>
+        <div id="fpToast" class="hidden"></div>
+        <div id="callOverlay" class="call-overlay hidden">
+          <div class="call-card">
+            <div class="call-head">
+              <span id="callPeer" class="mono"></span>
+              <span id="callStatus" class="call-status" data-i18n="call.calling">çağrılıyor…</span>
+              <span id="callTimer" class="call-timer mono" hidden></span>
+            </div>
+            <div id="callVideos" class="call-videos hidden">
+              <video id="remoteVideo" autoplay playsinline class="call-remote"></video>
+              <video id="localVideo" autoplay playsinline muted class="call-local"></video>
+            </div>
+            <div id="callAvatar" class="call-avatar hidden"></div>
+            <div class="call-actions">
+              <button id="callAcceptBtn" class="primary hidden" type="button" data-i18n="call.accept">Kabul et</button>
+              <button id="callRejectBtn" class="danger" type="button" data-i18n="call.reject">Reddet</button>
+              <button id="callEndBtn" class="danger hidden" type="button" data-i18n="call.end">Bitir</button>
+              <button id="callMuteBtn" class="secondary hidden" type="button" data-i18n="call.mute">Mikrofon kapat</button>
+              <button id="callVideoToggleBtn" class="secondary hidden" type="button" data-i18n="call.videoOff">Kamera kapalı</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="resetModal" class="modal hidden">
+        <div class="modal-card">
+          <h2 class="modal-title" data-i18n="reset.title">Kimliği sıfırla</h2>
+          <p class="modal-text" data-i18n="reset.text">Yeni kimlik oluşturulacak. Tüm bağlantılar kapanacak, oturumlar ve sohbet geçmişi silinecek. Bu işlem geri alınamaz.</p>
+          <div class="modal-actions">
+            <button id="resetCancelBtn" class="secondary" data-i18n="reset.cancel">Vazgeç</button>
+            <button id="resetConfirmBtn" class="danger" data-i18n="reset.confirm">Sıfırla</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="scanModal" class="modal hidden">
+        <div class="modal-card scan-card">
+          <p class="scan-stamp" data-i18n="scan.stamp">Kodu çerçeveye getir</p>
+          <div class="scan-frame">
+            <video id="scanVideo" autoplay playsinline muted></video>
+            <div class="scan-corner"></div>
+          </div>
+          <div class="modal-actions">
+            <button id="scanCancelBtn" class="secondary" type="button" data-i18n="scan.cancel">Vazgeç</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tuzak ekran (panik) -->
+    <div id="decoyView" hidden>
+      <div class="decoy-card">
+        <p class="decoy-title" data-i18n="decoy.title">Hava Durumu — Bugün</p>
+        <p class="decoy-note" data-i18n="decoy.note">İstanbul · 18°C · Parçalı bulutlu</p>
+        <button id="decoyRestartBtn" class="button-secondary" type="button" data-i18n="decoy.restart">Uygulamayı yeniden başlat</button>
+      </div>
+    </div>
+  </div>
+<script src="popup.js"></script>
+</body>
+</html>

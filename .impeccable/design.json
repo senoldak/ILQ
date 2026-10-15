@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-11T00:00:00Z",
+  "title": "Design System: ILQ",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Kemik Zemin",
+        "canonical": "#F5F1E6",
+        "tonalRamp": [
+          "#c3c0b6",
+          "#96938a",
+          "#68665f",
+          "#44423c",
+          "#f6f2e7",
+          "#f8f4e9",
+          "#faf6eb",
+          "#fbf7ed"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Manila Yüzey",
+        "canonical": "#FBF8EF",
+        "tonalRamp": [
+          "#c8c5bd",
+          "#999790",
+          "#6b6862",
+          "#45433e",
+          "#fbf8ef",
+          "#fbf8ef",
+          "#fcf8ee",
+          "#fcf8ee"
+        ]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Manila İkinci",
+        "canonical": "#EAE3D0",
+        "tonalRamp": [
+          "#bab5a5",
+          "#8f8a7e",
+          "#646056",
+          "#423e37",
+          "#ede7d5",
+          "#f2ecdd",
+          "#f6f1e4",
+          "#faf5ea"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "İnce Çizgi",
+        "canonical": "#D9D2BE",
+        "tonalRamp": [
+          "#ada797",
+          "#858173",
+          "#5e5a50",
+          "#3e3b33",
+          "#dfd9c7",
+          "#e8e2d2",
+          "#f0ebde",
+          "#f8f3e8"
+        ]
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Güçlü Çizgi",
+        "canonical": "#C4BBA2",
+        "tonalRamp": [
+          "#9d9581",
+          "#797363",
+          "#565145",
+          "#39362d",
+          "#cec6b0",
+          "#dcd5c2",
+          "#e9e3d4",
+          "#f5f1e5"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Damga Mürekkebi",
+        "canonical": "#26241C",
+        "tonalRamp": [
+          "#222018",
+          "#1e1c15",
+          "#1a1812",
+          "#161410",
+          "#4d4a42",
+          "#807d74",
+          "#b3b0a7",
+          "#e2dfd5"
+        ]
+      },
+      "ink-soft": {
+        "role": "primary",
+        "displayName": "Yumuşak Mürekkep",
+        "canonical": "#464238",
+        "tonalRamp": [
+          "#3b372e",
+          "#302d26",
+          "#26231d",
+          "#1d1b16",
+          "#676359",
+          "#928e84",
+          "#bebab0",
+          "#e6e2d8"
+        ]
+      },
+      "ink-mute": {
+        "role": "primary",
+        "displayName": "Sessiz Mürekkep",
+        "canonical": "#6E695C",
+        "tonalRamp": [
+          "#5a554a",
+          "#47443a",
+          "#35322a",
+          "#26241e",
+          "#888376",
+          "#aaa599",
+          "#ccc7bc",
+          "#ebe7dc"
+        ]
+      },
+      "tab-inactive": {
+        "role": "neutral",
+        "displayName": "İnaktif Sekme",
+        "canonical": "#615C4F",
+        "tonalRamp": [
+          "#504b40",
+          "#403c33",
+          "#302d25",
+          "#23211b",
+          "#7d786c",
+          "#a29e92",
+          "#c7c3b8",
+          "#e9e5db"
+        ]
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Yer Tutucu Mürekkep",
+        "canonical": "#726C5D",
+        "tonalRamp": [
+          "#5d584b",
+          "#4a453b",
+          "#36332b",
+          "#27241e",
+          "#8b8577",
+          "#aca79a",
+          "#cdc8bd",
+          "#ebe7dd"
+        ]
+      },
+      "trust": {
+        "role": "secondary",
+        "displayName": "Mum Yeşili",
+        "canonical": "#246C43",
+        "tonalRamp": [
+          "#205837",
+          "#1c452c",
+          "#193321",
+          "#162418",
+          "#4b8562",
+          "#7fa78b",
+          "#b3c8b4",
+          "#e2e7d9"
+        ]
+      },
+      "trust-deep": {
+        "role": "secondary",
+        "displayName": "Mum Yeşili Derin",
+        "canonical": "#16502F",
+        "tonalRamp": [
+          "#154227",
+          "#143520",
+          "#142819",
+          "#131e14",
+          "#3f6e51",
+          "#77977f",
+          "#aebfad",
+          "#e0e4d7"
+        ]
+      },
+      "trust-bg": {
+        "role": "secondary",
+        "displayName": "Mum Zemini",
+        "canonical": "#E4F0E7",
+        "tonalRamp": [
+          "#b6bfb7",
+          "#8c928b",
+          "#62655f",
+          "#40413c",
+          "#e8f1e8",
+          "#eef3ea",
+          "#f4f5ec",
+          "#f9f7ed"
+        ]
+      },
+      "trust-line": {
+        "role": "secondary",
+        "displayName": "Mum Çizgisi",
+        "canonical": "#B5D2BF",
+        "tonalRamp": [
+          "#91a798",
+          "#718174",
+          "#505a50",
+          "#363b33",
+          "#c2d9c7",
+          "#d3e2d3",
+          "#e4ebde",
+          "#f3f3e8"
+        ]
+      },
+      "danger": {
+        "role": "secondary",
+        "displayName": "RET Kaşesi",
+        "canonical": "#A33B2C",
+        "tonalRamp": [
+          "#833225",
+          "#66291f",
+          "#492018",
+          "#321913",
+          "#b35d4f",
+          "#c88a7d",
+          "#deb8ac",
+          "#f1e1d7"
+        ]
+      },
+      "danger-bg": {
+        "role": "secondary",
+        "displayName": "RET Zemini",
+        "canonical": "#F6E7E2",
+        "tonalRamp": [
+          "#c4b8b3",
+          "#968d88",
+          "#69625d",
+          "#443f3b",
+          "#f7eae4",
+          "#f9eee7",
+          "#faf2ea",
+          "#fbf6ed"
+        ]
+      },
+      "danger-line": {
+        "role": "secondary",
+        "displayName": "RET Çizgisi",
+        "canonical": "#E2C0B6",
+        "tonalRamp": [
+          "#b49991",
+          "#8b766f",
+          "#61534d",
+          "#403731",
+          "#e7cac0",
+          "#edd8ce",
+          "#f3e5db",
+          "#f9f1e7"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "Odak",
+        "canonical": "#7C8B73",
+        "tonalRamp": [
+          "#65705c",
+          "#4f5748",
+          "#3a3f33",
+          "#292b23",
+          "#939f89",
+          "#b2b9a7",
+          "#d0d3c4",
+          "#edebdf"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Giriş ekranı başlığı; tek hikaye cümlesi."
+      },
+      "title": {
+        "displayName": "Panel Başlığı",
+        "purpose": "Evrak/panel başlıkları (Bağlan, Bağlantı kodu)."
+      },
+      "label": {
+        "displayName": "Kayıt Kaşesi Etiketi",
+        "purpose": "Alan etiketleri ve kaşe başlıkları; büyük harf + harf aralıklı."
+      },
+      "mono": {
+        "displayName": "Ölçüm Mono",
+        "purpose": "Kod, adres, parmak izi, gönderen adı."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-sm",
+        "value": "0 1px 2px rgba(38,36,28,0.06), 0 1px 3px rgba(38,36,28,0.05)",
+        "purpose": "Kimlik fişi, kod kartı, aktif sekme; yükseltilmiş levha."
+      },
+      {
+        "name": "shadow-md",
+        "value": "0 2px 6px rgba(38,36,28,0.06), 0 8px 24px -12px rgba(38,36,28,0.18)",
+        "purpose": "Parmak izi kartı, hata şeridi, modal, mesaj menüsü."
+      }
+    ],
+    "motion": [
+      {
+        "name": "rise",
+        "value": "0.22s cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Tek anlatımlık giriş animasyonu: mesaj, parmak izi kartı, hata şeridi, menü."
+      },
+      {
+        "name": "ease-state",
+        "value": "0.14s-0.25s ease",
+        "purpose": "Durum geçişleri: hover, focus, kaşe/tema renk kaymaları."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "popup",
+        "value": "352px"
+      },
+      {
+        "name": "sidepanel-min",
+        "value": "300px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Birincil eylem: Bağlantı kur, Sohbete başla. Asla mum yeşili değil.",
+      "html": "<button class=\"ds-btn-primary\">Bağlantı kur</button>",
+      "css": ".ds-btn-primary { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; background:#26241C; color:#F5F1E6; font-family:'InterVar',system-ui,sans-serif; font-weight:600; font-size:13px; padding:10px 14px; border:none; border-radius:12px; cursor:pointer; transition:background 0.16s ease, transform 0.06s ease; } .ds-btn-primary:hover { background:#34362F; } .ds-btn-primary:active { transform:translateY(1px); } .ds-btn-primary:disabled { opacity:0.55; cursor:default; } .ds-btn-primary:focus-visible { outline:none; box-shadow:0 0 0 3px rgba(36,108,67,0.18); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "İkincil eylem: Yeni kod üret. Manila yüzey + güçlü kenar.",
+      "html": "<button class=\"ds-btn-secondary\">Yeni kod üret</button>",
+      "css": ".ds-btn-secondary { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; background:#FBF8EF; color:#464238; font-family:'InterVar',system-ui,sans-serif; font-weight:600; font-size:13px; padding:10px 14px; border:1px solid #C4BBA2; border-radius:12px; cursor:pointer; transition:background 0.16s ease, border-color 0.16s ease; } .ds-btn-secondary:hover { background:#EAE3D0; border-color:#6E695C; } .ds-btn-secondary:focus-visible { outline:none; box-shadow:0 0 0 3px rgba(36,108,67,0.18); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Alan içi aksiyon: Kopyala, Kimliği sıfırla.",
+      "html": "<button class=\"ds-btn-ghost\">Kopyala</button>",
+      "css": ".ds-btn-ghost { display:inline-flex; align-items:center; gap:5px; background:#FBF8EF; border:1px solid #D9D2BE; color:#464238; font-family:'InterVar',system-ui,sans-serif; font-size:11px; font-weight:600; padding:4px 9px; border-radius:6px; cursor:pointer; transition:background 0.14s ease, border-color 0.14s ease; } .ds-btn-ghost:hover { background:#EAE3D0; border-color:#C4BBA2; } .ds-btn-ghost:focus-visible { outline:none; box-shadow:0 0 0 3px rgba(36,108,67,0.18); }"
+    },
+    {
+      "name": "Input / Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Metin girişi ve monoline bağlantı kodu girişi.",
+      "html": "<input class=\"ds-input\" placeholder=\"Şifreli mesaj…\">",
+      "css": ".ds-input { width:100%; font-family:'InterVar',system-ui,sans-serif; font-size:13.5px; color:#26241C; background:#FBF8EF; border:1px solid #C4BBA2; border-radius:8px; padding:10px 12px; outline:none; transition:border-color 0.14s ease, box-shadow 0.14s ease; } .ds-input::placeholder { color:#726C5D; } .ds-input:focus { border-color:#6E695C; box-shadow:0 0 0 3px rgba(36,108,67,0.18); } .ds-input.mono { font-family:'JBMonoVar',Consolas,monospace; font-size:12px; }"
+    },
+    {
+      "name": "Status Kaşesi (pill)",
+      "kind": "chip",
+      "refersTo": "pill",
+      "description": "Resmi durum damgası: çevrimdışı/yayında/bağlı/doğrulanmış/hata.",
+      "html": "<span class=\"ds-pill\" data-state=\"verified\"><span class=\"ds-pill-dot\"></span>DOĞRULANMIŞ</span>",
+      "css": ".ds-pill { display:inline-flex; align-items:center; gap:6px; font-family:'InterVar',system-ui,sans-serif; font-size:10.5px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; padding:4px 9px; border-radius:4px; border:1px solid #B5D2BF; color:#16502F; background:#E4F0E7; } .ds-pill-dot { width:6px; height:6px; border-radius:50%; background:#246C43; } .ds-pill[data-state=\"offline\"] { color:#6E695C; background:#FBF8EF; border-color:#C4BBA2; } .ds-pill[data-state=\"error\"] { color:#A33B2C; background:#F6E7E2; border-color:#E2C0B6; }"
+    },
+    {
+      "name": "Tamper Bandı (güvenlik şeridi)",
+      "kind": "custom",
+      "refersTo": "safety-strip",
+      "description": "Mühürlü zarftaki güvenlik şeridinin karşılığı; doğrulama öncesi KAPALI.",
+      "html": "<div class=\"ds-safety\"><span class=\"ds-safety-band\">KAPALI · KAPALI · KAPALI</span><span class=\"ds-safety-body\">Bağlantı kurulunca güvenlik numarasını karşı cihazdakiyle karşılaştır.</span></div>",
+      "css": ".ds-safety { display:flex; align-items:stretch; gap:8px; background:#FBF8EF; border:1px solid #D9D2BE; border-radius:8px; padding:9px 11px; overflow:hidden; } .ds-safety-band { flex:none; align-self:stretch; writing-mode:vertical-rl; text-orientation:mixed; font-family:'JBMonoVar',Consolas,monospace; font-size:8px; letter-spacing:0.18em; color:#6E695C; border-right:1px dashed #C4BBA2; padding-right:6px; margin-right:2px; opacity:0.8; } .ds-safety-body { font-family:'InterVar',system-ui,sans-serif; font-size:11.5px; color:#464238; line-height:1.45; }"
+    },
+    {
+      "name": "Fingerprint Instrument",
+      "kind": "custom",
+      "refersTo": "fp-card",
+      "description": "Güvenlik numarası fişi; KAPALI bandı doğrulanınca DOĞRULANDI olur.",
+      "html": "<div class=\"ds-fp\"><div class=\"ds-fp-band\">KAPALI · KAPALI · KAPALI</div><div class=\"ds-fp-title\">Güvenlik numarası</div><div class=\"ds-fp-digits\">3A90 811C F2E4 119D 55C6 20F1</div><button class=\"ds-fp-yes\">Numaralar eşleşiyor</button></div>",
+      "css": ".ds-fp { position:relative; background:#FBF8EF; border:1px solid #B5D2BF; border-radius:12px; padding:12px; box-shadow:0 2px 6px rgba(38,36,28,0.06), 0 8px 24px -12px rgba(38,36,28,0.18); display:flex; flex-direction:column; gap:10px; } .ds-fp-band { font-family:'JBMonoVar',Consolas,monospace; font-size:8px; letter-spacing:0.14em; color:#6E695C; border:1px dashed #C4BBA2; background:#EAE3D0; border-radius:3px; padding:3px 8px; } .ds-fp-title { font-family:'InterVar',system-ui,sans-serif; font-size:13px; font-weight:650; color:#26241C; } .ds-fp-digits { font-family:'JBMonoVar',Consolas,monospace; font-size:12px; letter-spacing:0.04em; color:#26241C; line-height:1.6; padding:8px 12px; border:1px solid #D9D2BE; border-radius:8px; user-select:text; } .ds-fp-yes { background:#26241C; color:#F5F1E6; font-family:'InterVar',system-ui,sans-serif; font-weight:600; font-size:12.5px; padding:8px 10px; border:none; border-radius:12px; cursor:pointer; text-align:center; } .ds-fp-yes:hover { background:#34362F; }"
+    },
+    {
+      "name": "Mesaj Fişi (giden)",
+      "kind": "custom",
+      "refersTo": "message-out",
+      "description": "Giden mesaj: damga mürekkebi dolgu, sağ-alt köşe kırılır.",
+      "html": "<div class=\"ds-msg-out\"><span class=\"ds-msg-who\">ben</span>Bağlantı doğrulandı, teslim ediliyor.</div>",
+      "css": ".ds-msg-out { max-width:84%; align-self:flex-end; background:#26241C; color:#F5F1E6; font-family:'InterVar',system-ui,sans-serif; font-size:13px; line-height:1.4; padding:7px 11px; border-radius:12px; border-bottom-right-radius:3px; word-break:break-word; } .ds-msg-who { display:block; font-family:'JBMonoVar',Consolas,monospace; font-size:10px; font-weight:600; letter-spacing:0.02em; opacity:0.85; margin-bottom:2px; }"
+    },
+    {
+      "name": "Mesaj Fişi (gelen)",
+      "kind": "custom",
+      "refersTo": "message-in",
+      "description": "Gelen mesaj: manila ikinci zemin, sol-alt köşe kırılır.",
+      "html": "<div class=\"ds-msg-in\"><span class=\"ds-msg-who\">kurye</span>Zarf alındı, mühür sağlam.</div>",
+      "css": ".ds-msg-in { max-width:84%; align-self:flex-start; background:#EAE3D0; color:#26241C; font-family:'InterVar',system-ui,sans-serif; font-size:13px; line-height:1.4; padding:7px 11px; border-radius:12px; border:1px solid #D9D2BE; border-bottom-left-radius:3px; word-break:break-word; } .ds-msg-who { display:block; font-family:'JBMonoVar',Consolas,monospace; font-size:10px; font-weight:600; letter-spacing:0.02em; opacity:0.85; margin-bottom:2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Mühürlü Kargo",
+    "overview": "ILQ bir sohbet uygulaması değil, iki el arasında gidip gelen mühürlü bir teslimattır; yüzey gizli bir kurye masasıdır. Tekerlek-ikon temiz sohbet iskelesi bilinçli olarak reddedilir. Sıcak kemik kağıt zemin (#F5F1E6) ve damga mürekkebi (#26241C) kimliği taşır; tüm nötrler sıcaktır. Güven yeşili (#246C43) bir mum mühürdür: yalnızca doğrulanmış anında görünür. Doğrulama öncesi her güvenlik aracı KAPALI tamper bandı taşır; mühür kırılınca bant DOĞRULANDI'ya döner. Tek kırmızı RET kaşesi (#A33B2C) yalnızca hata anındadır. Kod, kimlik ve parmak izi mono ölçüm dilidir; ikonlar tek çizgi ailesinde (1.6 stroke) çizilir.",
+    "keyCharacteristics": [
+      "Sıcak kemik kağıt zemin; soğuk gri veya saf beyaz yok.",
+      "Her güven aracında KAPALI tamper bandı; doğrulanınca yalnızca o an yeşil.",
+      "Kayıt kaşesi estetiği: büyük harf, harf aralıklı, delikli kenarlar.",
+      "Mono yalnızca ölçüm dili (kod, adres, parmak izi, gönderen adı).",
+      "Panik çıkışı her şeyi yeniden mühürler ve sadece sıradan bir resmi bülten kalır."
+    ],
+    "rules": [
+      {
+        "name": "The Mum Mühür Kuralı",
+        "body": "Güven yeşili yalnızca doğrulanmış mührün anında görünür. Kıtlığı mesajıdır.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sıcak Mürekkep Kuralı",
+        "body": "Nötrler asla saf gri değildir; her ton bir miktar sıcaklık taşır.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tek Kırmızı Kuralı",
+        "body": "RET kaşesi sistemin tek kırmızısıdır ve yalnızca hata/sonlandırma anları için reserve edilir.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ölçüm Mono Kuralı",
+        "body": "Mono yalnızca kod, adres, parmak izi, gönderen adı gibi ölçülen veride kullanılır.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sessiz Gölge Kuralı",
+        "body": "Kalın ofset blok gölgeler ve sıfır ofsetli renkli halo yasaktır. Gölge her zaman ofset + blur taşır.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Delikli Kenar Kuralı",
+        "body": "Çizgi fişler (dashed) yalnızca kurye koparma hissinde kullanılır.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do sıcak nötrleri kullan — saf gri, saf beyaz veya siyah-karanlık cam yerine.",
+      "Do yeşili yalnızca doğrulanmış mührün anına sakla.",
+      "Do mono'yu ölçüm verisine sınırla.",
+      "Do gölgeleri ofset + blur ile, kısa ve alçak tut.",
+      "Do ikonları tek çizgi kalınlığında (1.6) aynı ailede çiz.",
+      "Do tamper bandı dilini koru: KAPALI → DOĞRULANDI geçişi."
+    ],
+    "donts": [
+      "Don't emoji veya unicode ikon kullan.",
+      "Don't gradient metin, cam/glass, glow veya neon vurgu kullan.",
+      "Don't 1px üzeri renkli border-left/right yap.",
+      "Don't kalın ofset blok gölge veya sıfır ofset halo kullan.",
+      "Don't birincil butonu mum yeşili yap.",
+      "Don't güvenlik öğelerinde koyu/neon cihaz estetiğine kay."
+    ]
+  }
+}

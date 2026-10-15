@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "ILQ — Sunucusuz P2P Güvenli Sohbet",
+  "version": "1.0.0",
+  "description": "Uçtan uca şifreli (Signal protokolü), sunucusuz P2P mesajlaşma. Hiçbir mesaj diske yazılmaz; tamamen uçucu.",
+  "permissions": ["offscreen", "sidePanel"],
+  "host_permissions": ["https://0.peerjs.com/*", "wss://0.peerjs.com/*"],
+  "background": {
+    "service_worker": "dist/background.js"
+  },
+  "side_panel": {
+    "default_path": "dist/sidepanel.html"
+  },
+  "action": {
+    "default_title": "ILQ"
+  },
+  "icons": {
+    "16": "dist/icon16.png",
+    "48": "dist/icon48.png",
+    "128": "dist/icon128.png"
+  }
+}

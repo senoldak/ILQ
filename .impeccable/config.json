@@ -1,0 +1,51 @@
+{
+  "detector": {
+    "ignoreValues": [
+      {
+        "rule": "design-system-font-size",
+        "value": "8px",
+        "reason": "Documented micro-value: micro-type step on the DESIGN.md type ramp."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "9px",
+        "reason": "Documented micro-value: micro-type step on the DESIGN.md type ramp."
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "3px",
+        "reason": "Documented micro-value: micro-radius step on the DESIGN.md rounded scale."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.12)",
+        "reason": "Documented micro-value: shadow-tint consistent with the DESIGN.md palette."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.45)",
+        "reason": "Documented micro-value: shadow-tint consistent with the DESIGN.md palette."
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "2px",
+        "reason": "Documented micro-value: micro-radius step on the DESIGN.md rounded scale."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0,0,0,0.18)",
+        "reason": "Documented micro-value: shadow-tint consistent with the DESIGN.md palette."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#000",
+        "reason": "Documented micro-value: PiP letterbox backing for local video, theme-neutral black."
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "44px",
+        "reason": "Documented micro-value: call-avatar display-glyph step on the DESIGN.md type ramp."
+      }
+    ]
+  }
+}

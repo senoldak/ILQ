@@ -1,0 +1,114 @@
+/* ============================================================
+   ILQ sağ yüz (side panel) — popup'tan türetilir.
+   Akışkan yükseklik, yeniden boyutlandırılabilir genişlik.
+   "Mühürlü Kargo" dünyası; dünya token'ları popup.css'tedir.
+   ============================================================ */
+
+html, body.side-panel {
+  width: auto;
+  min-width: 300px;
+  height: 100vh;
+  margin: 0;
+}
+
+body.side-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+body.side-panel .app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px 16px;
+  min-height: 0;
+}
+
+/* Giriş ekranı dikeyde ortalanmış okuma bölümü gibi davranır */
+body.side-panel .view.login {
+  flex: 1;
+  justify-content: center;
+  max-width: 340px;
+}
+
+/* Ana ekran tüm yüksekliği kullanır */
+body.side-panel #mainView {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+body.side-panel .tabs { flex: none; }
+
+body.side-panel .panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Sohbet paneli: mesajlar kalan tüm alanı kaplar */
+body.side-panel #panelChat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+body.side-panel .chatheader { flex: none; }
+
+body.side-panel .messages {
+  flex: 1;
+  height: auto;
+  min-height: 120px;
+  margin-bottom: 10px;
+}
+
+body.side-panel .compose { flex: none; }
+
+/* Geniş panelde mesajlar ve kod çok satıra yayılmaz; okunabilirlik için ölçü korunur */
+body.side-panel .msg { max-width: min(84%, 460px); }
+
+/* Parmak izi kartı sohbetin altında, kaydırmaya bağlı */
+body.side-panel #fpToast { flex: none; }
+
+/* Kod girişi ve kod kartı geniş yüzeyde ferah kalır */
+body.side-panel .code-readout {
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+
+/* Hata şeridi üst barda hizalanır */
+body.side-panel #mainView > .error { top: 60px; }
+
+/* --- paket 5: canlı arama overlay --- */
+.chat-call-btn {
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 4px;
+  font: 600 10px 'InterVar'; color: var(--ink-soft);
+  background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-sm);
+  padding: 3px 7px; cursor: pointer;
+}
+.chat-call-btn svg { width: 13px; height: 13px; }
+.chat-call-btn:hover { background: var(--surface-2); border-color: var(--hairline-strong); color: var(--ink); }
+.call-overlay {
+  position: absolute; inset: 0; z-index: 40; display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(2px);
+}
+.call-card {
+  width: min(320px, 86%); background: var(--surface); border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-lg, 14px); box-shadow: 0 10px 30px rgba(0,0,0,0.18); padding: 14px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.call-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.call-status { font: 600 11px 'InterVar'; color: var(--ink-soft); }
+.call-timer { font: 600 11px 'JetBrainsMono Variable', monospace; color: var(--ink-mute); }
+.call-videos { position: relative; aspect-ratio: 4 / 3; background: var(--ground); border-radius: 8px; overflow: hidden; }
+.call-remote { width: 100%; height: 100%; object-fit: cover; }
+.call-local { position: absolute; right: 8px; bottom: 8px; width: 30%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--hairline-strong); background: #000; }
+.call-avatar {
+  aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;
+  background: var(--surface-2); border-radius: 8px; color: var(--ink-mute);
+  font-size: 44px;
+}
+.call-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
